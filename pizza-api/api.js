@@ -78,7 +78,7 @@ api.put(
 api.delete(
   "/orders/{id}",
   (request) => {
-    return updateOrder(request.pathParams.id);
+    return deleteOrder(request.pathParams.id);
   },
   {
     error: 400, // код не успешной обработки запроса

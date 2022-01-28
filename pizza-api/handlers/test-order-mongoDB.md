@@ -39,6 +39,12 @@ curl \
 
 ---
 
+curl -i \
+-H "Content-Type: application/json" \
+-X DELETE https://9gaxz5ovp9.execute-api.eu-west-3.amazonaws.com/latest/orders/some-id
+
+---
+
 aws dynamodb scan \
 --table-name pizza-orders \
 --region eu-west-3 \
