@@ -4,10 +4,10 @@ const Api = require("claudia-api-builder");
 const api = new Api();
 
 const getPizzas = require("./handlers/get-pizzas.js"); // импорт обработчика для получения пицц
+const getOrders = require("./handlers/get-orders.js"); // импорт обработчика для получения заказов
 const createOrder = require("./handlers/create-order.js"); // импорт обработчика создание заказа
 const updateOrder = require("./handlers/update-order.js"); // импорт обработчика изменения заказа
 const deleteOrder = require("./handlers/delete-order.js"); // импорт обработчика удаление заказа
-// const listOrder = require("./handlers/list-order.js"); // импорт обработчика получения списка заказов
 
 api.get("/", (request) => {
   // возращает обработчик для базового пути
@@ -31,6 +31,26 @@ api.get(
   },
   {
     error: 404, // код не успешной обработки запроса
+  }
+);
+
+api.get(
+  "/orders",
+  (request) => {
+    return getOrders();
+  },
+  {
+    error: 400,
+  }
+);
+
+api.get(
+  "/orders/{id}",
+  (request) => {
+    return getOrders(request.pathParams.id);
+  },
+  {
+    error: 400,
   }
 );
 

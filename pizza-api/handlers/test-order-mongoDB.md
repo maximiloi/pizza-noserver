@@ -28,6 +28,17 @@ curl -i \
 
 ---
 
+curl -i \
+-H "Content-Type: application/json" \
+https://9gaxz5ovp9.execute-api.eu-west-3.amazonaws.com/latest/orders
+
+curl \
+-H "Content-Type: application/json" \
+-X GET https://9gaxz5ovp9.execute-api.eu-west-3.amazonaws.com/latest/orders \
+| jq
+
+---
+
 aws dynamodb scan \
 --table-name pizza-orders \
 --region eu-west-3 \

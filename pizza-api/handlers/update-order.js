@@ -1,6 +1,10 @@
-function updateOrder(id, updates) {
-  if (!id || !updates) {
-    // если в нет id и свойства, что делать с заказом, выдать ошибку
+"use strict";
+
+const AWS = require("aws-sdk");
+const docClient = new AWS.DynamoDB.DocumentClient();
+
+function updateOrder(orderId, options) {
+  if (!options || !options.pizza || !options.address) {
     throw new Error("Проверте номера заказа или укажите что сделать с заказом");
   }
   return {

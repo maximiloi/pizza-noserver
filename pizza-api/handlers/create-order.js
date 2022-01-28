@@ -4,7 +4,6 @@ const AWS = require("aws-sdk");
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const uuid = require("uuid");
-// import { v4 as uuidv4 } from "uuid";
 
 function createOrder(request) {
   if (!request || !request.pizza || !request.address)
