@@ -1,16 +1,21 @@
+"use strict";
+
 const AWS = require("aws-sdk");
 const docClient = new AWS.DynamoDB.DocumentClient();
 
+const uuid = require("uuid");
+// import { v4 as uuidv4 } from "uuid";
+
 function createOrder(request) {
-  if (!request || !request.pizzaId || !request.address) {
+  if (!request || !request.pizza || !request.address)
     // если в нет объекта order и в нем нет id пиццы и адреса клиента , выдать ошибку
     throw new Error("Проверте заказ, укажите пиццу или адрес заказа");
-  }
+
   return docClient
     .put({
       TableName: "pizza-orders",
       Item: {
-        orderId: "some-id",
+        orderId: uuid.v4(),
         pizza: request.pizza,
         address: request.address,
         orderStatus: "pending",
