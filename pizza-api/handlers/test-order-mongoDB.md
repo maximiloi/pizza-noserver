@@ -22,7 +22,7 @@ https://9gaxz5ovp9.execute-api.eu-west-3.amazonaws.com/latest/orders
 ---
 
 curl -i \
--d '{"pizza":5, "address":"221B Baker Street"}' \
+-d '{"pizza":2, "address":"221B Baker Street"}' \
 -H "Content-Type: application/json" \
 -X POST https://9gaxz5ovp9.execute-api.eu-west-3.amazonaws.com/latest/orders
 

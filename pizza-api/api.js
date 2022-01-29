@@ -6,8 +6,9 @@ const api = new Api();
 const getPizzas = require("./handlers/get-pizzas.js"); // импорт обработчика для получения пицц
 const getOrders = require("./handlers/get-orders.js"); // импорт обработчика для получения заказов
 const createOrder = require("./handlers/create-order.js"); // импорт обработчика создание заказа
-const updateOrder = require("./handlers/update-order.js"); // импорт обработчика изменения заказа
 const deleteOrder = require("./handlers/delete-order.js"); // импорт обработчика удаление заказа
+const updateOrder = require("./handlers/update-order.js"); // импорт обработчика изменения заказа
+const updateDeliveryStatus = require("./handlers/update-delivery-status.js"); // импорт обработчика изменения статуса заказа
 
 api.get("/", (request) => {
   // возращает обработчик для базового пути
@@ -81,6 +82,18 @@ api.delete(
     return deleteOrder(request.pathParams.id);
   },
   {
+    succes: 200, // код успешной обработки запроса
+    error: 400, // код не успешной обработки запроса
+  }
+);
+
+api.post(
+  "/delivery",
+  (request) => {
+    updateDeliveryStatus(request.body);
+  },
+  {
+    succes: 200, // код успешной обработки запроса
     error: 400, // код не успешной обработки запроса
   }
 );
